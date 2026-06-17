@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: "3"
+services:
+  napcat-kohme:
+    volumes:
+      - ./volume/napcat/QQ:/app/.config/QQ:rw
+      - ./volume/napcat/config:/app/napcat/config
+      - ./volume/napcat/logs:/app/napcat/logs
+    environment:
+      - ACCOUNT=123456
+      - WS_ENABLE=true
+      - NAPCAT_UID=0
+      - NAPCAT_GID=0
+    container_name: napcat-kohme
+    restart: always
+    image: mlikiowa/napcat-docker:latest
+  kohme:
+    volumes:
+      - ./volume/napcat/QQ:/app/.config/QQ:rw # 和napcat共享缓存目录
+      - ./volume/conf:/app/conf:rw
+      - ./volume/plugins:/app/plugins:rw
+      - ./volume/data:/app/data:rw
+    container_name: kohme
+    image: kohme:latest
+    restart:  always
