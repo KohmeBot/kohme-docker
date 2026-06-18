@@ -21,7 +21,7 @@ services:
       - ./volume/plugins:/app/plugins:rw
       - ./volume/data:/app/data:rw
     ports:
-      - "7878:7878"   # 本机7878 -> 容器7878
+      - "8787:8787"   # 8787 -> 8787
     container_name: kohme
     image: kohme:latest
     restart:  always
